@@ -7,7 +7,6 @@ import Book from './components/bookComponent';
 import InputBar from "./components/inputBar";
 import BookContainer from "./components/bookContainer";
 import SearchButton from "./components/SearchButton";
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

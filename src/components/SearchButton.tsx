@@ -4,7 +4,7 @@ import generateResponse from "../scripts/generateResponse"
 
 function Button() {
     return(
-        <button className="Search" onClick={generateResponse}>
+        <button className="Search" onClick={()=> generateResponse("Babel")}>
             <img src={searchicon} alt="search"/>
         </button>
     )
