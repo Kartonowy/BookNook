@@ -1,0 +1,36 @@
+header.inputbar {
+  background-color: #282c34;
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  input {
+    all:unset;
+    background-color: #47474d;
+    width: 35vw;
+    height: 10vh;
+    padding-left:3vmin;
+    margin: 0;
+    border-bottom-left-radius: 35px;
+    border-top-left-radius: 35px;
+  }
+  button {
+    all:unset;
+    background-color: #9a9aa0;
+    height: 10vh;
+    width: 9vh;
+    padding-right: 1vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 35px;
+    border-top-right-radius: 35px;
+  }
+  img {
+    height: 5vh;
+  }
+  span {
+    display:flex;
+    align-items: center;
+  }
+}

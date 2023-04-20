@@ -1,0 +1,42 @@
+.Book {
+  display:flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  align-items: center;
+  background-color: #282c34;
+  transition: background-color 0.5s linear;
+  padding: 2em;
+  width: 100%;
+  border-radius: 50px;
+  &:hover {
+    background-color: #47474d;
+  }
+  .Title {
+    margin:0;
+  }
+  .info {
+    align-self: flex-start;
+    margin-left: 1vw
+  }
+  h4 {
+    line-height:0;
+  }
+  a {
+    text-decoration: none;
+    &:visited {
+      text-decoration: none;
+      color:inherit;
+    }
+  }
+  span {
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  button {
+    all:unset;
+    background-color: #d96656;
+    padding:15px;
+  }
+}
