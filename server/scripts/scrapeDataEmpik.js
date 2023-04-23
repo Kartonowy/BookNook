@@ -1,19 +1,13 @@
-
 import * as cheerio from 'cheerio';
 import axios from 'axios';
 import Empik from './scrapeClasses/Empik.js'
+import {handleRedirects} from "./handleRedirects.js";
 
 export async function scrapeEmpik(userInput) {
     let bookArray = [];
 
-    await axios.get(`https://www.empik.com/szukaj/produkt?q=${userInput}&qtype=basicForm/`, {
-        proxy: {
-            host: 'http://localhost/express_backend',
-            port: '5000',
-        },
-    })
-        .then(response => {
-            console.log(response)
+    await axios.get(`https://www.empik.com/szukaj/produkt?q=${userInput}&qtype=basicForm/`)
+        .then(async response => {
             const $ = cheerio.load(response.data);
             $('.search-content .search-list-item').each((i, elem)=>{
                 if ($(elem).find('.category-line .ta-product-category').text().trim() === 'Książki') {
@@ -25,7 +19,15 @@ export async function scrapeEmpik(userInput) {
                     bookArray.push({title, author, price, link, type})
                 }
             })
+            console.log(bookArray.length)
+            if (bookArray.length === 0) {
+                let xd = await handleRedirects("Empik", response.request.path)
+                console.log(xd)
+                bookArray.push(await handleRedirects("Empik", response.request.path))
+            }
+            console.log(bookArray.length)
         })
         .catch(err => {console.error(err);})
+    console.log(new Empik(bookArray))
     return new Empik(bookArray)
 }

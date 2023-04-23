@@ -1,6 +1,5 @@
 import React from "react";
 import searchicon from "../images/searchicon.png"
-import generateResponse from "../scripts/generateResponse"
 
 function Button() {
     return(

@@ -6,12 +6,7 @@ import SK from './scrapeClasses/SwiatKsiazki.js'
 
 export async function scrapeSK(userInput) {
    let  skArray = [];
-    await axios.get(`https://www.swiatksiazki.pl/catalogsearch/result/?q=${userInput}`,{
-        proxy: {
-            host: 'http://localhost/express_backend',
-            port: '5000',
-        },
-    })
+    await axios.get(`https://www.swiatksiazki.pl/catalogsearch/result/?q=${userInput}`)
         .then(response => {
             const $ = cheerio.load(response.data);
                 $('.product-items .item').each((i,elem)=>{
