@@ -8,8 +8,8 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/express_backend/:book/', async (req, res) => {
-    res.json({ express: await generateResponse(req.params.book) })
+app.get('/get-book-prices/:book/', async (req, res) => {
+    res.json({ book: await generateResponse(req.params.book) })
 })
 
 app.listen(port, ()=>{

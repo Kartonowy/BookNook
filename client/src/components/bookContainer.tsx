@@ -1,10 +1,10 @@
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import "../scss/bookContainer.scss";
 
-function BookContainer(props : PropsWithChildren) {
+function BookContainer() {
+
     return(
         <div className="book-container">
-            {props.children}
         </div>
     )
 }
