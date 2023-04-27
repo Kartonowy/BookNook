@@ -11,7 +11,7 @@ export async function scrapeSK(userInput) {
             const $ = cheerio.load(response.data);
                 $('.product-items .item').each((i,elem)=>{
                     if ($(elem).find('div.product-item-type').text().split('|')[0].trim() === 'Książki') {
-                        let title = $(elem).find('strong a').text();
+                        let title = $(elem).find('strong a').text().trim();
                         let author = $(elem).find('span a ').text();
                         let price = $(elem).find('.special-price span.price-wrapper span.price').text();
                         let type = $(elem).find('div.product-item-type').text();
