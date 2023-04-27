@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from "react";
+import React, {useState} from "react";
 import "../scss/bookContainer.scss";
 import "../scss/inputBar.scss"
 import "../scss/bookComponent.scss";
