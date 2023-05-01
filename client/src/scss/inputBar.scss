@@ -1,22 +1,30 @@
 header.inputbar {
-  background-color: #282c34;
+  background-color: #A39499;
   padding: 2em;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
   input {
     all:unset;
-    background-color: #47474d;
+    background-color: #BBBBBB;
     width: 35vw;
-    height: 10vh;
+    height: 9.4vh; //modify
     padding-left:3vmin;
     margin: 0;
     border-bottom-left-radius: 35px;
     border-top-left-radius: 35px;
   }
+  .inputcontainer {
+    padding: 3px;
+    background: linear-gradient(to left, #EF2965, #D30040);
+    border-bottom-left-radius: 35px;
+    border-top-left-radius: 35px;
+  }
   button {
     all:unset;
-    background-color: #9a9aa0;
+    background: linear-gradient(to right, #EF2965, #D30040);
     height: 10vh;
     width: 9vh;
     padding-right: 1vmin;

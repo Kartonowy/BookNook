@@ -1,15 +1,14 @@
 .Book {
-  display:flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
+  display:grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  grid-column-gap: 2vw;
+  background-color: #A39499;
   align-items: center;
-  background-color: #282c34;
   transition: background-color 0.5s linear;
-  padding: 2em;
   width: 100%;
   border-radius: 50px;
   &:hover {
-    background-color: #47474d;
+    background-color: #E6DFE1;
   }
   .Title {
     margin:0;
@@ -22,7 +21,7 @@
     line-height:0;
   }
   a {
-    text-decoration: none;
+    all:unset;
     &:visited {
       text-decoration: none;
       color:inherit;
@@ -34,9 +33,21 @@
     align-items: center;
     justify-content: space-around;
   }
+  .buttonContainer {
+    background: linear-gradient(to left, #EF2965, #D30040);
+    padding:2px;
+    border-radius: 25px;
+    display:inline-block;
+  }
   button {
     all:unset;
-    background-color: #d96656;
-    padding:15px;
+    background: #A39499;
+    padding:13px;
+    color:white;
+    border-radius: 25px;
+  }
+  .smartContainer {
+    display: flex;
+    justify-content: center;
   }
 }

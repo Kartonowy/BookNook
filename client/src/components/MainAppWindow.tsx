@@ -15,16 +15,20 @@ function MainBookFinder() {
         let booksObjArr : JSX.Element[] = [];
         booksArr = response.book.Empik
         booksArr = booksArr.concat(response.book.SK)
-        booksArr.sort((a : any,b : any)=>{
+        booksArr = booksArr.filter((book: any) => book.price !== '')
+            .sort((a : any,b : any)=>{
             return parseFloat(a.price) - parseFloat(b.price)
         })
         booksArr.forEach((bookObject : any) => {
-            console.log(booksObjArr)
-            booksObjArr.push(<div className="Book">
+            booksObjArr.push(<li className="Book">
                 <h3 className={"Title"}><a href={bookObject.link}>{bookObject.title}</a></h3>
                 <h1 className="Price">{bookObject.price}</h1>
-                <button>Idź do oferty!</button>
-            </div>)
+                <div className="smartContainer">
+                    <div className="buttonContainer">
+                        <button onClick={() => {window.open(bookObject.link)}}>Idź do oferty!</button>
+                    </div>
+                </div>
+            </li>)
         })
         await setBooksList(prevState => booksObjArr)
     }
@@ -35,15 +39,20 @@ function MainBookFinder() {
             <header className="inputbar">
                 <h1 className="title">Book Nook</h1>
                 <span className="input">
-                    <input type="text" className="Searchbar" placeholder="What you are searching for?" onChange={event => {setInputValue(event.target.value)}}/>
+                    <div className="inputcontainer">
+                        <input type="text" className="Searchbar" placeholder="What are you searching for?"
+                               onChange={event => {setInputValue(event.target.value)}}
+                               onKeyDown={event => {if (event.key === "Enter") handleSearch()}
+                        }/>
+                    </div>
                     <button className="Search" onClick={handleSearch}>
                         <img src={searchicon} alt="search"/>
                     </button>
                 </span>
             </header>
-            <div className="book-container">
+            <ul className="book-container">
                 {booksList}
-            </div>
+            </ul>
         </div>
             );
 }
