@@ -6,6 +6,9 @@ header.inputbar {
   justify-content: space-around;
   border-bottom-left-radius: 35px;
   border-bottom-right-radius: 35px;
+  .title {
+    font-size: 5.5vmin;
+  }
   input {
     all:unset;
     background-color: #BBBBBB;

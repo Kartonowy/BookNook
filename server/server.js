@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/get-book-prices/:book/', async (req, res) => {
-    res.json({ book: await generateResponse(req.params.book) })
+    res.json({ message: await generateResponse(req.params.book) })
 })
 
 app.listen(port, ()=>{

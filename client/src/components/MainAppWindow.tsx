@@ -13,15 +13,21 @@ function MainBookFinder() {
     async function handleSearch() {
         let response = await getBookObject(inputValue)
         let booksObjArr : JSX.Element[] = [];
-        booksArr = response.book.Empik
-        booksArr = booksArr.concat(response.book.SK)
+        booksArr = response.message.Empik
+        booksArr = booksArr.concat(response.message.SK)
         booksArr = booksArr.filter((book: any) => book.price !== '')
             .sort((a : any,b : any)=>{
             return parseFloat(a.price) - parseFloat(b.price)
         })
+        console.log(booksArr)
         booksArr.forEach((bookObject : any) => {
             booksObjArr.push(<li className="Book">
-                <h3 className={"Title"}><a href={bookObject.link}>{bookObject.title}</a></h3>
+                <div className="baseInfo">
+                    <h3 className={"Title"}>
+                        <a href={bookObject.link}>{bookObject.title}</a>
+                    </h3>
+                    <h5>{bookObject.author.replaceAll("\n", "").replaceAll(" ,", ", ")}</h5>
+                </div>
                 <h1 className="Price">{bookObject.price}</h1>
                 <div className="smartContainer">
                     <div className="buttonContainer">

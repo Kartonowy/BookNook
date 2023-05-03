@@ -10,15 +10,24 @@
   &:hover {
     background-color: #E6DFE1;
   }
-  .Title {
-    margin:0;
+  .baseInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 5vw;
+
+      .Title {
+        margin:0;
+      }
+
+      h5 {
+        margin: 0;
+      }
+
   }
   .info {
     align-self: flex-start;
     margin-left: 1vw
-  }
-  h4 {
-    line-height:0;
   }
   a {
     all:unset;
@@ -35,15 +44,14 @@
   }
   .buttonContainer {
     background: linear-gradient(to left, #EF2965, #D30040);
-    padding:2px;
+    padding:2.5px;
     border-radius: 25px;
     display:inline-block;
   }
   button {
     all:unset;
     background: #A39499;
-    padding:13px;
-    color:white;
+    padding:12.5px;
     border-radius: 25px;
   }
   .smartContainer {

@@ -12,7 +12,7 @@ export async function scrapeSK(userInput) {
                 $('.product-items .item').each((i,elem)=>{
                     if ($(elem).find('div.product-item-type').text().split('|')[0].trim() === 'Książki') {
                         let title = $(elem).find('strong a').text().trim();
-                        let author = $(elem).find('span a ').text();
+                        let author = $(elem).find('span.product-item-author').text().trim();
                         let price = $(elem).find('.special-price span.price-wrapper span.price').text();
                         let type = $(elem).find('div.product-item-type').text();
                         let link = $(elem).find('.product-item-link').attr('href');

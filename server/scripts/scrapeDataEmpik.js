@@ -12,22 +12,19 @@ export async function scrapeEmpik(userInput) {
             $('.search-content .search-list-item').each((i, elem)=>{
                 if ($(elem).find('.category-line .ta-product-category').text().trim() === 'Książki') {
                     let title = $(elem).find('h2 a').text().trim();
-                    let author = $(elem).find('.smartAuthorWrapper .smartAuthor').text().trim()
+                    let author = $(elem).find('.smartAuthorWrapper').text().trim()
                     let price = $(elem).find('.price').text().trim()
                     let link = `https://www.empik.com${$(elem).find('.product-title a').attr('href')}`
                     let type = $(elem).find('.category-line .ta-product-carrier').text().split(',')[0].trim()
                     bookArray.push({title, author, price, link, type})
                 }
             })
-            console.log(bookArray.length)
             if (bookArray.length === 0) {
                 let xd = await handleRedirects("Empik", response.request.path)
                 console.log(xd)
                 bookArray.push(await handleRedirects("Empik", response.request.path))
             }
-            console.log(bookArray.length)
         })
         .catch(err => {console.error(err);})
-    console.log(new Empik(bookArray))
     return new Empik(bookArray)
 }
