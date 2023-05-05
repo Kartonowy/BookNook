@@ -14,7 +14,7 @@ function MainBookFinder() {
 
     let booksArr: any;
 
-        async function handleSearch() {
+    async function handleSearch() {
         let response = await getBookObject(inputValue)
         let booksObjArr : JSX.Element[] = [];
         booksArr = response.message.Empik

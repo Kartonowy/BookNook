@@ -65,3 +65,13 @@
   font-size: 1.2em;
   border-radius: 15px;
 }
+.Options {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  .Switch {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
