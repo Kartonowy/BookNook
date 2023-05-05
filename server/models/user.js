@@ -18,4 +18,4 @@ const userSchema = new Schema({
 
 const User = moongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;
