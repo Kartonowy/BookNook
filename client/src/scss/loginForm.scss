@@ -1,0 +1,67 @@
+.LoginContainer {
+  height:100%;
+  width:100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius:25px;
+  .formContainer {
+    height: 65%;
+    width: 30%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius:25px;
+    padding: 3px;
+    background: linear-gradient(to left, #EF2965, #D30040);
+  }
+  form {
+    background: #A39499;
+    height:100%;
+    width:100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content:space-around;
+    align-items: center;
+    border-radius:25px;
+    label {
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      font-size:1.3vh;
+      .InputContainer {
+        width: 80%;
+        padding:1.5px;
+        background: linear-gradient(to left, #EF2965, #D30040);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      input {
+        all: unset;
+        width:100%;
+        background-color: #BBBBBB;
+        height:6vh;
+        border-radius:15px;
+      }
+    }
+  }
+}
+.SubmitContainer {
+  background: linear-gradient(to left, #EF2965, #D30040);
+  padding: 3px;
+  text-align: center;
+  border-radius: 15px;
+}
+.SubmitLoginForm {
+  all:unset;
+  background: #A39499;
+  width: 8vw;
+  height: 5vh;
+  font-size: 1.2em;
+  border-radius: 15px;
+}

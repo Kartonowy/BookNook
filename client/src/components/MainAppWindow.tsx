@@ -4,13 +4,17 @@ import "../scss/inputBar.scss"
 import "../scss/bookComponent.scss";
 import {getBookObject} from "./scripts/getBookObject";
 import searchicon from "../images/searchicon.png";
+import Hamburger from "hamburger-react"
+import LoginFormComponent from "./loginFormComponent";
 
 function MainBookFinder() {
     const [inputValue, setInputValue] = useState('')
     const [booksList, setBooksList] = useState([<div></div>,<div></div>])
+    const [loginFormVisibility, setLoginFormVisibility] = useState(false);
+
     let booksArr: any;
 
-    async function handleSearch() {
+        async function handleSearch() {
         let response = await getBookObject(inputValue)
         let booksObjArr : JSX.Element[] = [];
         booksArr = response.message.Empik
@@ -36,30 +40,73 @@ function MainBookFinder() {
                 </div>
             </li>)
         })
-        await setBooksList(prevState => booksObjArr)
+        await setBooksList(() => booksObjArr)
     }
 
-
-    return(
-        <div>
+    if (loginFormVisibility) {
+        return(
+            <div>
             <header className="inputbar">
                 <h1 className="title">Book Nook</h1>
                 <span className="input">
                     <div className="inputcontainer">
                         <input type="text" className="Searchbar" placeholder="What are you searching for?"
-                               onChange={event => {setInputValue(event.target.value)}}
-                               onKeyDown={event => {if (event.key === "Enter") handleSearch()}
-                        }/>
+                               onChange={event => {
+                                   setInputValue(event.target.value)
+                               }}
+                               onKeyDown={event => {
+                                   if (event.key === "Enter") handleSearch()
+                               }
+                               }/>
                     </div>
                     <button className="Search" onClick={handleSearch}>
                         <img src={searchicon} alt="search"/>
                     </button>
                 </span>
+                <div className="menu">
+                    <Hamburger  rounded
+                                size={50}
+                                duration={0.8}
+                                onToggle={toggled => (setLoginFormVisibility(toggled))}></Hamburger>
+                </div>
             </header>
-            <ul className="book-container">
-                {booksList}
-            </ul>
+                <div className="Login">
+                    <LoginFormComponent></LoginFormComponent>
+                </div>
         </div>
-            );
+        )
+    } else {
+        return (
+            <div>
+                <header className="inputbar">
+                    <h1 className="title">Book Nook</h1>
+                    <span className="input">
+                    <div className="inputcontainer">
+                        <input type="text" className="Searchbar" placeholder="What are you searching for?"
+                               onChange={event => {
+                                   setInputValue(event.target.value)
+                               }}
+                               onKeyDown={event => {
+                                   if (event.key === "Enter") handleSearch()
+                               }
+                               }/>
+                    </div>
+                    <button className="Search" onClick={handleSearch}>
+                        <img src={searchicon} alt="search" className="searchicon" />
+                    </button>
+                </span>
+                    <div className="menu">
+                        <Hamburger  rounded
+                                    size={50}
+                                    duration={0.8}
+                                    onToggle={toggled => (setLoginFormVisibility(toggled))}></Hamburger>
+                    </div>
+                </header>
+                <ul className="book-container">
+                    {booksList}
+                </ul>
+            </div>
+        );
+    }
 }
 export default MainBookFinder;
