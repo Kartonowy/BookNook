@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import './App.css';
+import './scss/App.scss';
 
 function App(props: PropsWithChildren) {
   return (
