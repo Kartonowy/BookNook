@@ -83,7 +83,8 @@ app.post("/login", (req, res) => {
                                 if (err) return res.json({ message: err})
                                 return res.json({
                                     message: "Success",
-                                    token: "Bearer " + token
+                                    token: "Bearer " + token,
+                                    username: dbUser.username
                                 })
                             }
                         )
@@ -117,4 +118,20 @@ function verifyJWT(req, res, next) {
 
 app.get("/isUserAuth", verifyJWT, (req, res) => {
     res.json({isLoggedIn: true, username: req.user.username})
+})
+
+app.post("/sendFavBook", async (req, res) => {
+    let reqbody = JSON.parse(req.body.body)
+    let bookObject = reqbody.bookObject;
+    let user = await User.findOne({username: reqbody.username})
+    user.favbooks.push(bookObject)
+    user.save()
+    res.json( { message:"Success" } )
+})
+
+app.post("/retrieveFavBooks", async (req, res) => {
+    let reqbody = JSON.parse(req.body.body)
+    let user = await User.findOne({username:reqbody.username})
+    console.log(user)
+    res.json({ favbooks : user.favbooks})
 })

@@ -8,6 +8,8 @@ import Hamburger from "hamburger-react"
 import LoginFormComponent from "./loginFormComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import sendFavBook from "./scripts/sendFavBook";
+import retrieveFavBooks from "./scripts/retrieveFavBooks";
 
 
 
@@ -18,18 +20,27 @@ function MainBookFinder() {
     let booksArr: any;
 
     function handleFav(bookObject : any) {
-        console.log(bookObject)
+        sendFavBook(bookObject)
+    }
+
+    async function handleRetrieveFav() {
+        let booksArr =  await retrieveFavBooks()
+        console.log(booksArr)
+        await updateBooksArr(booksArr)
     }
 
     async function handleSearch() {
         let response = await getBookObject(inputValue)
-        let booksObjArr : JSX.Element[] = [];
         booksArr = response.message.Empik
         booksArr = booksArr.concat(response.message.SK)
         booksArr = booksArr.filter((book: any) => book.price !== '')
             .sort((a : any,b : any)=>{
             return parseFloat(a.price) - parseFloat(b.price)
         })
+        await updateBooksArr(booksArr)
+    }
+    async function updateBooksArr(booksArr : any) {
+        let booksObjArr : JSX.Element[] = [];
         booksArr.forEach((bookObject : any) => {
             booksObjArr.push(<li className="Book">
                 <div className="baseInfo">
@@ -102,6 +113,7 @@ function MainBookFinder() {
                         <img src={searchicon} alt="search" className="searchicon" />
                     </button>
                 </span>
+                    <button onClick={handleRetrieveFav}>O</button>
                     <div className="menu">
                         <Hamburger  rounded
                                     size={50}

@@ -20,6 +20,7 @@ function LogInComponent({setRegisterFormVisibility} : any) {
         )
             .then((data : any) => {
                 localStorage.setItem("token", data.data.token);
+                localStorage.setItem("username", data.data.username);
                 console.log(data)
             })
     }
