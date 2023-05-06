@@ -19,7 +19,7 @@ app.use(express.json());
 
 //connect to mongodb
 
-const dbUrl = `mongodb+srv://${process.env.MONGO_LOGIN}:${process.env.MONGO_PASSWIORD}@booknook.i0agglj.mongodb.net/?retryWrites=true&w=majority`
+const dbUrl = `mongodb+srv://${process.env.MONGO_LOGIN}:${process.env.MONGO_PASSWIORD}@booknook.i0agglj.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(()=> {
         app.listen(process.env.PORT || 5000, ()=>{
@@ -36,14 +36,18 @@ app.get('/get-book-prices/:book/', async (req, res) => {
 //Creating user and logging in
 
 app.post("/register", async (req, res) => {
-    const user = req.body;
+    const user = JSON.parse(req.body.body);
     const takenUsername = await User.findOne({ username: user.username })
     const takenEmail = await User.findOne({ email: user.email })
-
+    req.body.body = JSON.parse(req.body.body)
+    console.log(user)
+    console.log(req.body.body)
+    console.log(req.body.body.password)
     if (takenUsername || takenEmail) {
         res.json({ message: "Username or email has already been taken"})
     } else {
-        user.password = await bcrypt.hash(req.body.password, 10)
+        let salt = await bcrypt.genSalt(10)
+        user.password = await bcrypt.hash(req.body.body.password, salt)
 
         const dbUser = new User({
             username: user.username.toLowerCase(),
