@@ -113,3 +113,7 @@ function verifyJWT(req, res, next) {
         res.json({message: "Incorrect token given", isLoggedIn: false})
     }
 }
+
+app.get("/isUserAuth", verifyJWT, (req, res) => {
+    res.json({isLoggedIn: true, username: req.user.username})
+})
