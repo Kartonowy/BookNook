@@ -6,13 +6,20 @@ import {getBookObject} from "./scripts/getBookObject";
 import searchicon from "../images/searchicon.png";
 import Hamburger from "hamburger-react"
 import LoginFormComponent from "./loginFormComponent";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+
+
 
 function MainBookFinder() {
     const [inputValue, setInputValue] = useState('')
     const [booksList, setBooksList] = useState([<div></div>,<div></div>])
     const [loginFormVisibility, setLoginFormVisibility] = useState(false);
-
     let booksArr: any;
+
+    function handleFav(bookObject : any) {
+        console.log(bookObject)
+    }
 
     async function handleSearch() {
         let response = await getBookObject(inputValue)
@@ -33,6 +40,7 @@ function MainBookFinder() {
                 </div>
                 <h1 className="Price">{bookObject.price}</h1>
                 <div className="smartContainer">
+                    <FontAwesomeIcon icon={faStar} onClick={()=>handleFav(bookObject)}></FontAwesomeIcon>
                     <div className="buttonContainer">
                         <button onClick={() => {window.open(bookObject.link)}}>Idź do oferty!</button>
                     </div>
