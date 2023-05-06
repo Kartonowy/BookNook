@@ -40,9 +40,6 @@ app.post("/register", async (req, res) => {
     const takenUsername = await User.findOne({ username: user.username })
     const takenEmail = await User.findOne({ email: user.email })
     req.body.body = JSON.parse(req.body.body)
-    console.log(user)
-    console.log(req.body.body)
-    console.log(req.body.body.password)
     if (takenUsername || takenEmail) {
         res.json({ message: "Username or email has already been taken"})
     } else {
@@ -55,7 +52,7 @@ app.post("/register", async (req, res) => {
             password: user.password
         })
 
-        dbUser.save()
+        await dbUser.save()
         res.json({ message: "Success"})
     }
 })
@@ -64,8 +61,8 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", (req, res) => {
 
-    const userLoggingIn = req.body;
-
+    const userLoggingIn = JSON.parse(req.body.body)
+    req.body.body = JSON.parse(req.body.body)
     User.findOne({ username: userLoggingIn.username })
         .then(dbUser => {
             if (!dbUser) {

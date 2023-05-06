@@ -15,7 +15,7 @@ function RegisterComponent({setRegisterFormVisibility} : any) {
         await axios.post("/register", {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
-        })
+        }).then(res => {console.log(res)})
     }
 
     return (

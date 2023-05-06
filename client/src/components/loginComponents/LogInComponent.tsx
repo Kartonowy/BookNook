@@ -7,7 +7,7 @@ function LogInComponent({setRegisterFormVisibility} : any) {
 
         const form : any = e.target;
         const user = {
-            username: form[0].value,
+            username: form[0].value.toLowerCase(),
             password: form[1].value
         }
 
@@ -18,9 +18,9 @@ function LogInComponent({setRegisterFormVisibility} : any) {
                 body: JSON.stringify(user)
             }
         )
-            .then((res : any) => res.json())
-            .then(data => {
-                localStorage.setItem("token", data.token);
+            .then((data : any) => {
+                localStorage.setItem("token", data.data.token);
+                console.log(data)
             })
     }
 
