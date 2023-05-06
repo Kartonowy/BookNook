@@ -23,7 +23,6 @@ function MainBookFinder() {
             .sort((a : any,b : any)=>{
             return parseFloat(a.price) - parseFloat(b.price)
         })
-        console.log(booksArr)
         booksArr.forEach((bookObject : any) => {
             booksObjArr.push(<li className="Book">
                 <div className="baseInfo">
