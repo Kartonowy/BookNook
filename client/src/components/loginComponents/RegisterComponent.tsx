@@ -15,7 +15,14 @@ function RegisterComponent({setRegisterFormVisibility} : any) {
         await axios.post("/register", {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
-        }).then(res => {console.log(res)})
+        }).then((res : any) => {
+            console.log(res)
+            if (res.data.message === "Success") {
+                alert("Registered! Now you can log in!")
+            } else {
+                alert(res.data.message)
+            }
+        })
     }
 
     return (

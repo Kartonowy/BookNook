@@ -19,9 +19,14 @@ function LogInComponent({setRegisterFormVisibility} : any) {
             }
         )
             .then((data : any) => {
-                localStorage.setItem("token", data.data.token);
-                localStorage.setItem("username", data.data.username);
-                console.log(data)
+                if (data.data.message === "Success") {
+                    localStorage.setItem("token", data.data.token);
+                    localStorage.setItem("username", data.data.username);
+                    console.log(data)
+                    alert("Sucessfully logged in!")
+                } else {
+                    alert(data.data.message)
+                }
             })
     }
 
