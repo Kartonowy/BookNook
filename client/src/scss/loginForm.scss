@@ -1,3 +1,4 @@
+$field-color : #A39499;
 .LoginContainer {
   height:100%;
   width:100%;
@@ -6,9 +7,10 @@
   justify-content: center;
   align-items: center;
   border-radius:25px;
+  background-color: $field-color;
   .formContainer {
-    height: 65%;
-    width: 30%;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -18,7 +20,7 @@
     background: linear-gradient(to left, #EF2965, #D30040);
   }
   form {
-    background: #A39499;
+    background: $field-color;
     height:100%;
     width:100%;
     display: flex;
@@ -59,7 +61,7 @@
 }
 .SubmitLoginForm {
   all:unset;
-  background: #A39499;
+  background: $field-color;
   width: 8vw;
   height: 5vh;
   font-size: 1.2em;

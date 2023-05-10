@@ -88,7 +88,7 @@ function MainBookFinder() {
             <ul className="book-container">
                 {booksList}
             </ul>
-                {loginFormVisibility ? <div className="Login"> <LoginFormComponent></LoginFormComponent> </div>: null}
+                {loginFormVisibility ? <div className="Login"><LoginFormComponent></LoginFormComponent></div>: null}
         </div>
     )
 }
