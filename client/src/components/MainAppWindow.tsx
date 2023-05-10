@@ -10,6 +10,7 @@ import {faUser} from '@fortawesome/free-regular-svg-icons'
 import sendFavBook from "./scripts/sendFavBook";
 import retrieveFavBooks from "./scripts/retrieveFavBooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import ProfileComponent from "./profileComponent";
 
 function MainBookFinder() {
     const [inputValue, setInputValue] = useState('')
@@ -17,6 +18,9 @@ function MainBookFinder() {
     const [loginFormVisibility, setLoginFormVisibility] = useState(false);
     let booksArr: any;
 
+    //TODO: CLOSE WINDOW UPON LOGGING OUT
+    // CLOSE WINDOW UPON LOGGING / REGISTERING
+    // USER AVATAR??
     async function handleFav(bookObject : any) {
         await sendFavBook(bookObject)
     }
@@ -88,7 +92,7 @@ function MainBookFinder() {
             <ul className="book-container">
                 {booksList}
             </ul>
-                {loginFormVisibility ? <div className="Login"><LoginFormComponent></LoginFormComponent></div>: null}
+            {loginFormVisibility ? <div className="Login">{localStorage.getItem("loggedIn") ? <ProfileComponent></ProfileComponent> : <LoginFormComponent></LoginFormComponent>}</div>: null}
         </div>
     )
 }

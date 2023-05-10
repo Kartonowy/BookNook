@@ -83,6 +83,7 @@ app.post("/login", (req, res) => {
                                 if (err) return res.json({ message: err})
                                 return res.json({
                                     message: "Success",
+                                    loggedIn: true,
                                     token: "Bearer " + token,
                                     username: dbUser.username
                                 })
