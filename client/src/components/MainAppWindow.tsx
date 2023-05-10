@@ -17,8 +17,8 @@ function MainBookFinder() {
     const [loginFormVisibility, setLoginFormVisibility] = useState(false);
     let booksArr: any;
 
-    function handleFav(bookObject : any) {
-        sendFavBook(bookObject)
+    async function handleFav(bookObject : any) {
+        await sendFavBook(bookObject)
     }
 
     async function handleRetrieveFav() {

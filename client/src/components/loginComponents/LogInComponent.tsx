@@ -35,13 +35,13 @@ function LogInComponent({setRegisterFormVisibility} : any) {
             <label>
                 Name:
                 <div className="InputContainer">
-                    <input type="text" name="name" />
+                    <input type="text" name="name" placeholder="Enter your username" />
                 </div>
             </label>
             <label>
                 Password:
                 <div className="InputContainer">
-                    <input type="password" name="password" />
+                    <input type="password" name="password" placeholder="Enter your password" />
                 </div>
             </label>
             <div className="Options">

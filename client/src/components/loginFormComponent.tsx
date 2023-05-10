@@ -5,6 +5,7 @@ import LogInComponent from "./loginComponents/LogInComponent";
 function LoginFormComponent() {
     const [registerTab, setRegisterTab] = useState(false)
 
+
     function setRegisterTabVisibility(value : boolean) {
         setRegisterTab(value)
     }
