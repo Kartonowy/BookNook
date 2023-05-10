@@ -13,6 +13,8 @@ async function sendFavBook(bookObject : any) {
                         body: JSON.stringify({bookObject : bookObject, username : localStorage.username})
                     }
                 ).then((res) => {console.log(res)})
+            } else {
+                alert("You need to login in order to save offers.")
             }
         }
     )

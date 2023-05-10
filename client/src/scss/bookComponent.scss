@@ -6,8 +6,11 @@
   align-items: center;
   transition: background-color 0.5s linear;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 35px;
   &:hover {
+    background-color: #E6DFE1;
+  }
+  &:hover .smartContainer .buttonContainer button {
     background-color: #E6DFE1;
   }
   .baseInfo {
@@ -53,9 +56,14 @@
     background: #A39499;
     padding:12.5px;
     border-radius: 25px;
+    transition: background-color 0.5s linear;
   }
   .smartContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .starIcon {
+    font-size: 35px;
   }
 }

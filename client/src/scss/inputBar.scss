@@ -1,24 +1,27 @@
 .inputbar {
-  top:0;
+  width: 80vw;
+  height: 12vh;
+  top: 0;
   position: sticky;
   background-color: #A39499;
-  padding: 2em;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 4fr 1fr;
+  grid-column-gap: 2vw;
   align-items: center;
-  justify-content: space-around;
   border-bottom-left-radius: 35px;
   border-bottom-right-radius: 35px;
-  width: 80vw;
-  height: 9vh;
+  padding: 0 2em 2em ;
+
   .title {
     font-size: 5.5vmin;
   }
+
   .Searchbar {
-    all:unset;
+    all: unset;
     background-color: #BBBBBB;
     width: 35vw;
     height: 9.4vh; //modify
-    padding-left:3vmin;
+    padding-left: 3vmin;
     margin: 0;
     border-bottom-left-radius: 35px;
     border-top-left-radius: 35px;
@@ -49,24 +52,25 @@
     display:flex;
     align-items: center;
   }
-  .favourites {
-    font-size:6.5vmin;
-    color: #EF2965;
-  }
 }
 
 .menu {
-  height:7.6vh;
+  height: 7.6vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 1.5vh;
+
   .menubar {
     height: 1.5vh;
     width: 3vw;
     background: #000;
     border-radius: 25px;
+  }
+
+  .favourites {
+    font-size: 6.5vmin;
   }
 }
 
@@ -87,5 +91,4 @@
 
 .userIcon {
   font-size:6.5vmin;
-  color: #D30040;
 }

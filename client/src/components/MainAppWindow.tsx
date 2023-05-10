@@ -49,7 +49,7 @@ function MainBookFinder() {
                 </div>
                 <h1 className="Price">{bookObject.price}</h1>
                 <div className="smartContainer">
-                    <FontAwesomeIcon icon={faStar} onClick={()=>handleFav(bookObject)}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faStar} onClick={()=>handleFav(bookObject)} className="starIcon"></FontAwesomeIcon>
                     <div className="buttonContainer">
                         <button onClick={() => {window.open(bookObject.link)}}>Idź do oferty!</button>
                     </div>
@@ -59,8 +59,6 @@ function MainBookFinder() {
         await setBooksList(() => booksObjArr)
     }
 
-    // @ts-ignore
-    // @ts-ignore
     return (
         <div>
             <header className="inputbar">
