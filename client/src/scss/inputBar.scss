@@ -1,4 +1,6 @@
 .inputbar {
+  top:0;
+  position: sticky;
   background-color: #A39499;
   padding: 2em;
   display: flex;
@@ -7,6 +9,7 @@
   border-bottom-left-radius: 35px;
   border-bottom-right-radius: 35px;
   width: 80vw;
+  height: 9vh;
   .title {
     font-size: 5.5vmin;
   }
@@ -19,6 +22,7 @@
     margin: 0;
     border-bottom-left-radius: 35px;
     border-top-left-radius: 35px;
+    font-size: 24px;
   }
   .inputcontainer {
     padding: 3px;
@@ -45,12 +49,18 @@
     display:flex;
     align-items: center;
   }
+  .favourites {
+    font-size:6.5vmin;
+    color: #EF2965;
+  }
 }
 
 .menu {
   height:7.6vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 1.5vh;
   .menubar {
     height: 1.5vh;
@@ -61,9 +71,21 @@
 }
 
 .Login {
+  top: 15vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  z-index: 1000;
   margin-top:5vh;
   background-color: #A39499;
   height: 60vh;
-  width: 100%;
+  width: 30vw;
   border-radius:25px;
+}
+
+.userIcon {
+  font-size:6.5vmin;
+  color: #D30040;
 }

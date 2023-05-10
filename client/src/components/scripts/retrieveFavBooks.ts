@@ -16,6 +16,9 @@ async function retrieveFavBooks()  {
                         console.log(res)
                         booksObjArr = res.data.favbooks
                     })
+                } else {
+                    alert("Log in to see saved offers.")
+
                 }
             }
         ).catch(err=>console.log(err))

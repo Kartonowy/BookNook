@@ -4,14 +4,12 @@ import "../scss/inputBar.scss"
 import "../scss/bookComponent.scss";
 import {getBookObject} from "./scripts/getBookObject";
 import searchicon from "../images/searchicon.png";
-import Hamburger from "hamburger-react"
 import LoginFormComponent from "./loginFormComponent";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import {faStar} from '@fortawesome/free-regular-svg-icons'
+import {faUser} from '@fortawesome/free-regular-svg-icons'
 import sendFavBook from "./scripts/sendFavBook";
 import retrieveFavBooks from "./scripts/retrieveFavBooks";
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function MainBookFinder() {
     const [inputValue, setInputValue] = useState('')
@@ -25,7 +23,7 @@ function MainBookFinder() {
 
     async function handleRetrieveFav() {
         let booksArr =  await retrieveFavBooks()
-        console.log(booksArr)
+        if (booksArr.length === 0) return;
         await updateBooksArr(booksArr)
     }
 
@@ -41,8 +39,8 @@ function MainBookFinder() {
     }
     async function updateBooksArr(booksArr : any) {
         let booksObjArr : JSX.Element[] = [];
-        booksArr.forEach((bookObject : any) => {
-            booksObjArr.push(<li className="Book">
+        booksArr.forEach((bookObject : any, index : number) => {
+            booksObjArr.push(<li className="Book" key={index}>
                 <div className="baseInfo">
                     <h3 className={"Title"}>
                         <a href={bookObject.link}>{bookObject.title}</a>
@@ -61,9 +59,10 @@ function MainBookFinder() {
         await setBooksList(() => booksObjArr)
     }
 
-    if (loginFormVisibility) {
-        return(
-            <div>
+    // @ts-ignore
+    // @ts-ignore
+    return (
+        <div>
             <header className="inputbar">
                 <h1 className="title">Book Nook</h1>
                 <span className="input">
@@ -82,50 +81,17 @@ function MainBookFinder() {
                     </button>
                 </span>
                 <div className="menu">
-                    <Hamburger  rounded
-                                size={50}
-                                duration={0.8}
-                                onToggle={toggled => (setLoginFormVisibility(toggled))}></Hamburger>
+                    <FontAwesomeIcon icon={faStar} className="favourites" onClick={handleRetrieveFav}></FontAwesomeIcon>
+                    <div className="iconContainer">
+                        <FontAwesomeIcon icon={faUser} className="userIcon" onClick={()=>{loginFormVisibility ? setLoginFormVisibility(false) : setLoginFormVisibility(true)}}/>
+                    </div>
                 </div>
             </header>
-                <div className="Login">
-                    <LoginFormComponent></LoginFormComponent>
-                </div>
+            <ul className="book-container">
+                {booksList}
+            </ul>
+                {loginFormVisibility ? <div className="Login"> <LoginFormComponent></LoginFormComponent> </div>: null}
         </div>
-        )
-    } else {
-        return (
-            <div>
-                <header className="inputbar">
-                    <h1 className="title">Book Nook</h1>
-                    <span className="input">
-                    <div className="inputcontainer">
-                        <input type="text" className="Searchbar" placeholder="What are you searching for?"
-                               onChange={event => {
-                                   setInputValue(event.target.value)
-                               }}
-                               onKeyDown={event => {
-                                   if (event.key === "Enter") handleSearch()
-                               }
-                               }/>
-                    </div>
-                    <button className="Search" onClick={handleSearch}>
-                        <img src={searchicon} alt="search" className="searchicon" />
-                    </button>
-                </span>
-                    <button onClick={handleRetrieveFav}>O</button>
-                    <div className="menu">
-                        <Hamburger  rounded
-                                    size={50}
-                                    duration={0.8}
-                                    onToggle={toggled => (setLoginFormVisibility(toggled))}></Hamburger>
-                    </div>
-                </header>
-                <ul className="book-container">
-                    {booksList}
-                </ul>
-            </div>
-        );
-    }
+    )
 }
 export default MainBookFinder;
