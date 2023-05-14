@@ -47,7 +47,7 @@ app.post("/register", async (req, res) => {
         user.password = await bcrypt.hash(req.body.body.password, salt)
 
         const dbUser = new User({
-            username: user.username.toLowerCase(),
+            username: user.username,
             email: user.email.toLowerCase(),
             password: user.password
         })
