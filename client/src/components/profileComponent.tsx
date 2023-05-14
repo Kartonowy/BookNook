@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import "../scss/profile.scss"
 
 function ProfileComponent() {
     const [userStats, setUserStats] = useState({searchAmount : 0, favbooksAmount : 0})
@@ -29,11 +30,21 @@ function ProfileComponent() {
     }, [])
 
     return (
-        <div className="ProfileContainer">
-            <span className="welcomeMessage">Welcome, <span className="username">{localStorage.getItem("username")}</span></span>
-            <span className="favBookCount">{userStats.favbooksAmount}</span>
-            <span className="searchAmount">{userStats.searchAmount}</span>
-            <span className="LogOut" onClick={logOut}>Log out</span>
+        <div className="smartProfileContainer">
+            <div className="ProfileContainer">
+                <span className="welcomeMessage">Welcome, <span className="username">{localStorage.getItem("username")}</span></span>
+                <div className="statsContainer">
+                    <div className="favBookCountContainer container">
+                        <span className="favBookCount number">{userStats.favbooksAmount}</span>
+                        <span className="text">Offers starred</span>
+                    </div>
+                    <div className="searchCountContainer container">
+                        <span className="searchAmount number">{userStats.searchAmount}</span>
+                        <span className="text">Searches</span>
+                    </div>
+                </div>
+                <span className="LogOut" onClick={logOut}>Log out</span>
+            </div>
         </div>
     )
 
