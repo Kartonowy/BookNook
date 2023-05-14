@@ -85,7 +85,8 @@ app.post("/login", (req, res) => {
                                     message: "Success",
                                     loggedIn: true,
                                     token: "Bearer " + token,
-                                    username: dbUser.username
+                                    username: dbUser.username,
+                                    searchAmount: dbUser.searchAmount,
                                 })
                             }
                         )
@@ -135,4 +136,18 @@ app.post("/retrieveFavBooks", async (req, res) => {
     let user = await User.findOne({username:reqbody.username})
     console.log(user)
     res.json({ favbooks : user.favbooks})
+})
+
+app.post("/updateSearchAmount", async (req, res) => {
+    let reqbody = JSON.parse(req.body.body)
+    let user = await User.findOne({username: reqbody.username})
+    user.searchAmount += 1;
+    user.save()
+    res.json({ message: "Success" })
+})
+
+app.post("/getUserStats", async (req, res) => {
+    let reqbody = JSON.parse(req.body.body)
+    let user = await User.findOne({username: reqbody.username})
+    res.json({ favbooksAmount : user.favbooks.length, searchAmount : user.searchAmount })
 })

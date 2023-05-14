@@ -17,6 +17,11 @@ const userSchema = new Schema({
     favbooks: {
         type: Array,
         required: false,
+    },
+    searchAmount: {
+        type: Number,
+        required: false,
+        default: 0,
     }
 }, { timestamps: true , collection : 'Users' })
 

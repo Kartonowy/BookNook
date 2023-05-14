@@ -11,16 +11,15 @@ import sendFavBook from "./scripts/sendFavBook";
 import retrieveFavBooks from "./scripts/retrieveFavBooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ProfileComponent from "./profileComponent";
+import updateSearchAmount from "./scripts/updateSearchAmount";
 
 function MainBookFinder() {
     const [inputValue, setInputValue] = useState('')
     const [booksList, setBooksList] = useState([<div></div>,<div></div>])
-    const [loginFormVisibility, setLoginFormVisibility] = useState(false);
+    const [loginFormVisibility, setLoginFormVisibility] = useState(true);
     let booksArr: any;
-
-    //TODO: CLOSE WINDOW UPON LOGGING OUT
-    // CLOSE WINDOW UPON LOGGING / REGISTERING
-    // USER AVATAR??
+    
+    
     async function handleFav(bookObject : any) {
         await sendFavBook(bookObject)
     }
@@ -39,6 +38,7 @@ function MainBookFinder() {
             .sort((a : any,b : any)=>{
             return parseFloat(a.price) - parseFloat(b.price)
         })
+        updateSearchAmount()
         await updateBooksArr(booksArr)
     }
     async function updateBooksArr(booksArr : any) {
