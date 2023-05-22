@@ -3,7 +3,7 @@ import axios from "axios";
 function updateSearchAmount() {
     let searchAmount: any = localStorage.getItem("searchAmount");
     localStorage.setItem("searchAmount", JSON.stringify(parseInt(searchAmount) + 1))
-    axios.post("/updateSearchAmount", {
+    axios.post("/api/userdata/updateSearchAmount", {
         headers: {
             "Content-Type": "application/json"
         },

@@ -2,11 +2,11 @@ import axios from 'axios';
 
 
 async function sendFavBook(bookObject : any) {
-    await axios.get("/isUserAuth", { headers: { "x-access-token": localStorage.getItem("token")}})
+    await axios.get("/api/auth/isUserAuth", { headers: { "x-access-token": localStorage.getItem("token")}})
         .then( async (data : any) => {
             if (data.data.isLoggedIn) {
                 console.log("Logged in")
-                await axios.post("/sendFavBook", {
+                await axios.post("/api/userdata/sendFavBook", {
                         headers: {
                             "Content-Type": "application/json"
                         },
