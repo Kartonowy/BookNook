@@ -2,12 +2,12 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
-import generateResponse from "./scripts/generateResponse.js";
+import generateResponse from "./src/scripts/generateResponse.js";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import User from "./models/user.js";
+import User from "./src/models/user.js";
 
 const app = express();
 
