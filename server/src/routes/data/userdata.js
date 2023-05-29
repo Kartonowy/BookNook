@@ -3,11 +3,18 @@ import User from "../../models/user.js";
 
 const userdata = express.Router();
 
-userdata.post("/sendFavBook", async (req, res) => {
+userdata.post("/handleFav", async (req, res) => {
 	let reqbody = JSON.parse(req.body.body);
 	let bookObject = reqbody.bookObject;
 	let user = await User.findOne({ username: reqbody.username });
-	user.favbooks.push(bookObject);
+	let index = user.favbooks.findIndex((book) => book.link == bookObject.link);
+	if (index != -1) {
+		console.log("Removed");
+		user.favbooks.splice(index, 1);
+	} else {
+		console.log("Added");
+		user.favbooks.push(bookObject);
+	}
 	user.save();
 	res.json({ message: "Success" });
 });

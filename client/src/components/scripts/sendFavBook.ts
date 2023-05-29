@@ -6,7 +6,7 @@ async function sendFavBook(bookObject : any) {
         .then( async (data : any) => {
             if (data.data.isLoggedIn) {
                 console.log("Logged in")
-                await axios.post("/api/userdata/sendFavBook", {
+                await axios.post("/api/userdata/handleFav", {
                         headers: {
                             "Content-Type": "application/json"
                         },

@@ -11,9 +11,8 @@ app.use(bodyParser.json(), urlencodedParser);
 app.use(cors());
 app.use(express.json());
 
-//connect to mongodb
-
 const dbUrl = `mongodb+srv://${process.env.MONGO_LOGIN}:${process.env.MONGO_PASSWIORD}@booknook.i0agglj.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
+
 mongoose
 	.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
