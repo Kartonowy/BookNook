@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/api/books/getBookPrices/:",
-      "dest": "index.js"
+      "dest": "./routes/getBookPrices.js"
     }
   ]
 }
