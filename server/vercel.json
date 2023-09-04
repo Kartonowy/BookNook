@@ -6,11 +6,5 @@
       "use": "@now/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/books/*",
-      "dest": "./routes/getBookPrices.js"
-    }
-  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
