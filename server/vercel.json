@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/api/books/getBookPrices/:",
+      "src": "/api/books/*",
       "dest": "./routes/getBookPrices.js"
     }
   ]
