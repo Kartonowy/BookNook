@@ -24,4 +24,8 @@ mongoose
 
 app.use("/api", router);
 
+app.get("/", () => {
+  resizeBy.json({ mess: "Hello world" });
+});
+
 module.exports = app;
