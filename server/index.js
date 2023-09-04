@@ -23,3 +23,5 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/api", router);
+
+module.exports = app;
